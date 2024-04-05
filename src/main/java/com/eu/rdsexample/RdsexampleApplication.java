@@ -2,6 +2,9 @@ package com.eu.rdsexample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class RdsexampleApplication {
@@ -10,4 +13,9 @@ public class RdsexampleApplication {
         SpringApplication.run(RdsexampleApplication.class, args);
     }
 
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }
